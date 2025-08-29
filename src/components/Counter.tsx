@@ -4,15 +4,12 @@ function CounterButton() {
   const [count, setCount] = useState(3);
   const codeString = `
 import { useState } from "react";
-
 function CounterButton() {
   const [count, setCount] = useState(3);
-
   return (
     <main className="container mx-auto p-6">
       <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-center gap-6">
         <h4 className="text-xl font-semibold">Count: {count}</h4>
-
         <div className="flex gap-4">
           <button
             onClick={() => setCount(count - 1)}
@@ -23,7 +20,6 @@ function CounterButton() {
           >
             Decrease
           </button>
-
           <button
             onClick={() => setCount(count + 1)}
             className="px-4 py-2 rounded-lg font-medium bg-green-600 hover:bg-green-700 text-white transition"
@@ -35,7 +31,6 @@ function CounterButton() {
     </main>
   );
 }
-
 export default CounterButton;`;
 
   const handleCopy = () => {
@@ -43,7 +38,7 @@ export default CounterButton;`;
   };
 
   return (
-    <main className="container mx-auto p-6">
+    <>
       <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-center gap-6">
         <h4 className="text-xl font-semibold">Count: {count}</h4>
 
@@ -91,7 +86,7 @@ export default CounterButton;`;
           <code>{codeString}</code>
         </pre>
       </div>
-    </main>
+    </>
   );
 }
 

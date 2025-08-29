@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Counter from "./components/Counter";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import TodoList from "./components/Todo/List";
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
             <Sidebar />
 
             {/* Main content */}
-            <main className="flex-1 p-6">
+            <main className="container mx-auto flex-1 p-6">
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/counter" element={<Counter />}></Route>
+                <Route path="/todo" element={<TodoList />}></Route>
               </Routes>
             </main>
           </div>
