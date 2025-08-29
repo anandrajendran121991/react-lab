@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# React Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modular React lab that consolidates multiple **frontend interview-style apps** into a single platform.
+This project is designed as a **practice playground** to strengthen React fundamentals, hooks, state management, routing, and performance optimizations — while serving as a quick reference for interview prep.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- **React (Vite + TypeScript)**
+- **React Router v6**
+- **TailwindCSS**
+- **Context API / Local Storage**
+- **External APIs** (OMDb, Weather API, etc.)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🔹 Features / Modules
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### ✅ Beginner
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Counter App** → Simple state updates (increment/decrement/reset)
+- **Todo List** → Add, remove, mark complete
+- **Search & Filter List** → Static data filtering with controlled input
+
+### ✅ Intermediate
+
+- **Form with Validation** → Login/Signup with field validation
+- **Theme Switcher** → Global context for light/dark mode
+
+### ✅ API & State Management
+
+- **Movie Search App (API)** → Fetch from OMDb API (loading + error states)
+- **Cart App** → Add/remove items, calculate total, persist in localStorage
+- **Protected Routes App** → Login/logout with fake auth, protect dashboard route
+
+### ✅ Advanced
+
+- **Weather Dashboard** → Fetch from API, remember last searched city in localStorage
+- **Job Board / Chat (Advanced)** → Filtering, state management, performance optimization
+
+---
+
+## ⚡ Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/anandrajendran121991/react-lab.git
+
+# Go into the project folder
+cd react-lab
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
