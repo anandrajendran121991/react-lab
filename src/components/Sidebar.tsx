@@ -5,7 +5,7 @@ function Sidebar() {
     <aside className="w-64 bg-gray-800 text-white h-screen p-6 flex flex-col gap-4">
       <nav className="flex flex-col gap-3">
         <Link
-          to="/home"
+          to="/"
           className="px-3 py-2 rounded hover:bg-gray-700 transition-colors"
         >
           Home
