@@ -8,7 +8,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<any>(null);
 
   const navigate = useNavigate();
 
@@ -24,8 +23,7 @@ function Login() {
       setLoading(true);
       setError("");
 
-      const userCred = await signInWithEmailAndPassword(auth, email, password);
-      setUser(userCred.user);
+      await signInWithEmailAndPassword(auth, email, password);
 
       navigate("/");
     } catch (err: any) {
