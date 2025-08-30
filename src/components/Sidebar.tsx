@@ -28,12 +28,6 @@ function Sidebar() {
         >
           Cart
         </Link>
-        <Link
-          to="/weather"
-          className="px-3 py-2 rounded hover:bg-gray-700 transition-colors"
-        >
-          Weather
-        </Link>
       </nav>
     </aside>
   );
