@@ -23,10 +23,10 @@ function Sidebar() {
           Todo
         </Link>
         <Link
-          to="/cart"
+          to="/ecommerce"
           className="px-3 py-2 rounded hover:bg-gray-700 transition-colors"
         >
-          Cart
+          Ecommerce
         </Link>
       </nav>
     </aside>

@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./services/firebase"; // your firebase.ts
 import Signup from "./components/Signup";
+import Product from "./components/Ecommerce/ProductList";
 
 function App() {
   const [user, setUser] = useState<any>(null);
@@ -45,6 +46,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/counter" element={<Counter />} />
                 <Route path="/todo" element={<TodoList />} />
+                <Route path="/ecommerce" element={<Product />} />
                 <Route path="/login" element={<Navigate to="/" />} />
               </Routes>
             </main>
