@@ -12,22 +12,22 @@ function Sidebar({
 
   return (
     <>
-      {/* Overlay for mobile */}
-      {isOpen && (
-        <div
-          onClick={onClose}
-          className="fixed inset-0 bg-black bg-opacity-50 md:hidden z-40"
-        />
-      )}
-
-      {/* Sidebar */}
+      {/* Sidebar only */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-6 flex flex-col gap-4 transform 
-          transition-transform duration-300 z-50 
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-          md:translate-x-0 md:static md:flex`}
+        className={`fixed top-0 left-0 min-h-screen w-64 bg-gray-900 text-white p-6 flex flex-col gap-4 transform
+          transition-transform duration-300 z-50
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0 md:sticky md:top-0`}
       >
-        <nav className="flex flex-col gap-3">
+        {/* Close button visible only on small screens */}
+        <button
+          className="absolute top-4 right-4 text-gray-400 hover:text-white md:hidden"
+          onClick={onClose}
+        >
+          ✕
+        </button>
+
+        <nav className="flex flex-col gap-3 mt-8 md:mt-0">
           <Link
             to="/"
             onClick={onClose}

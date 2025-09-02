@@ -34,7 +34,11 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // or spinner
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
+      </div>
+    );
   }
 
   return (
@@ -42,13 +46,18 @@ function App() {
       {user ? (
         // Logged-in layout
         <div className="flex flex-col min-h-screen">
+          {/* Navbar always at top */}
           <Navbar onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-          <div className="flex flex-1">
+
+          <div className="flex flex-1 overflow-hidden">
+            {/* Sidebar (slides in on mobile, static on md+) */}
             <Sidebar
               isOpen={isSidebarOpen}
               onClose={() => setIsSidebarOpen(false)}
             />
-            <main className="container mx-auto flex-1 p-6">
+
+            {/* Main content area */}
+            <main className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto bg-gray-50">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/counter" element={<Counter />} />
@@ -66,13 +75,17 @@ function App() {
           </div>
         </div>
       ) : (
-        // Not logged in → only show login
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/login" />} />
-        </Routes>
+        // Not logged in → only show login/signup
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-1 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gray-50">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </Routes>
+          </main>
+        </div>
       )}
     </Router>
   );
