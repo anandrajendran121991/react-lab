@@ -1,7 +1,6 @@
-import React from "react";
 import type { CartProps } from "../../interface/Ecommerce";
 
-const Cart: React.FC<CartProps> = ({ cart, onClose, onRemove }) => {
+function Cart({ cart, onClose, onRemove }: CartProps) {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
@@ -67,6 +66,6 @@ const Cart: React.FC<CartProps> = ({ cart, onClose, onRemove }) => {
       )}
     </div>
   );
-};
+}
 
 export default Cart;

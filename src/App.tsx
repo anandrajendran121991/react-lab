@@ -16,10 +16,14 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./services/firebase"; // your firebase.ts
 import Signup from "./components/Signup";
 import Product from "./components/Ecommerce/ProductList";
+import CandyCrush from "./components/Games/CandyCrush";
+import Racing from "./components/Games/Racing";
+import TicTacToe from "./components/Games/TicTacToe";
 
 function App() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -38,9 +42,12 @@ function App() {
       {user ? (
         // Logged-in layout
         <div className="flex flex-col min-h-screen">
-          <Navbar />
+          <Navbar onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
           <div className="flex flex-1">
-            <Sidebar />
+            <Sidebar
+              isOpen={isSidebarOpen}
+              onClose={() => setIsSidebarOpen(false)}
+            />
             <main className="container mx-auto flex-1 p-6">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -48,6 +55,12 @@ function App() {
                 <Route path="/todo" element={<TodoList />} />
                 <Route path="/ecommerce" element={<Product />} />
                 <Route path="/login" element={<Navigate to="/" />} />
+                <Route
+                  path="/candycrush"
+                  element={<CandyCrush ROWS={5} COLS={5} />}
+                />
+                <Route path="/racing" element={<Racing />} />
+                <Route path="/tic-tac-toe" element={<TicTacToe />} />
               </Routes>
             </main>
           </div>
