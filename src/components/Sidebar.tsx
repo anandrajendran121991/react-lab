@@ -30,24 +30,28 @@ function Sidebar({
         <nav className="flex flex-col gap-3">
           <Link
             to="/"
+            onClick={onClose}
             className="px-3 py-2 rounded hover:bg-gray-700 transition-colors"
           >
             Home
           </Link>
           <Link
             to="/counter"
+            onClick={onClose}
             className="px-3 py-2 rounded hover:bg-gray-700 transition-colors"
           >
             Counter
           </Link>
           <Link
             to="/todo"
+            onClick={onClose}
             className="px-3 py-2 rounded hover:bg-gray-700 transition-colors"
           >
             Todo
           </Link>
           <Link
             to="/ecommerce"
+            onClick={onClose}
             className="px-3 py-2 rounded hover:bg-gray-700 transition-colors"
           >
             Ecommerce
@@ -68,15 +72,16 @@ function Sidebar({
                 <li>
                   <Link
                     to="/candycrush"
+                    onClick={onClose}
                     className="block px-3 py-2 rounded hover:bg-gray-700 transition-colors"
                   >
                     Candy Crush
                   </Link>
                 </li>
-
                 <li>
                   <Link
                     to="/tic-tac-toe"
+                    onClick={onClose}
                     className="block px-3 py-2 rounded hover:bg-gray-700 transition-colors"
                   >
                     Tic Tac Toe
