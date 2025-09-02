@@ -41,7 +41,7 @@ export default function TodoApp() {
     );
   };
 
-  // ✅ Fixed filtering logic
+  // ✅ Filtered list
   const filteredTodos = todos.filter((todo) => {
     const matchesSearch = todo.text
       .toLowerCase()
@@ -52,25 +52,25 @@ export default function TodoApp() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-6">
       {/* Todo Card */}
-      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+      <div className="w-full max-w-lg bg-white shadow-2xl rounded-2xl p-6 sm:p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">
           ✅ Todo App
         </h2>
 
         {/* Input + Button */}
-        <div className="flex mb-4">
+        <div className="flex flex-col sm:flex-row mb-4 gap-2 sm:gap-0">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter a task..."
-            className="flex-1 border border-gray-300 rounded-l-lg p-3 focus:ring-2 focus:ring-indigo-400 outline-none"
+            className="flex-1 border border-gray-300 rounded-lg sm:rounded-l-lg sm:rounded-r-none p-3 focus:ring-2 focus:ring-indigo-400 outline-none"
           />
           <button
             onClick={addTodo}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-3 rounded-r-lg transition"
+            className="bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg transition"
           >
             Add
           </button>
@@ -78,23 +78,25 @@ export default function TodoApp() {
         {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
 
         {/* Controls */}
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
           {/* Toggle */}
-          <button
-            onClick={() => setShowCompleted(!showCompleted)}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-              showCompleted ? "bg-blue-600" : "bg-gray-300"
-            }`}
-          >
-            <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                showCompleted ? "translate-x-6" : "translate-x-1"
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowCompleted(!showCompleted)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                showCompleted ? "bg-blue-600" : "bg-gray-300"
               }`}
-            />
-          </button>
-          <span className="text-sm text-gray-600 w-32">
-            {showCompleted ? "Showing all" : "Hiding completed"}
-          </span>
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  showCompleted ? "translate-x-6" : "translate-x-1"
+                }`}
+              />
+            </button>
+            <span className="text-sm text-gray-600">
+              {showCompleted ? "Showing all" : "Hiding completed"}
+            </span>
+          </div>
 
           {/* Search */}
           <input
@@ -114,7 +116,6 @@ export default function TodoApp() {
                 key={todo.id}
                 className="flex items-center justify-between bg-gray-50 border rounded-lg px-4 py-2 shadow-sm"
               >
-                {/* ✅ Checkbox */}
                 <input
                   type="checkbox"
                   checked={todo.completed}
@@ -122,7 +123,7 @@ export default function TodoApp() {
                   className="h-4 w-4 accent-blue-600"
                 />
                 <span
-                  className={`flex-1 ml-3 ${
+                  className={`flex-1 ml-3 text-sm sm:text-base ${
                     todo.completed
                       ? "line-through text-gray-400"
                       : "text-gray-700"
@@ -132,7 +133,7 @@ export default function TodoApp() {
                 </span>
                 <button
                   onClick={() => removeTodo(todo.id)}
-                  className="text-red-500 hover:text-red-700 transition cursor-pointer ml-2"
+                  className="text-red-500 hover:text-red-700 transition cursor-pointer ml-2 text-lg"
                 >
                   ✕
                 </button>
