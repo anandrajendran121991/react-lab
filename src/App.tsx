@@ -17,7 +17,6 @@ import { auth } from "./services/firebase"; // your firebase.ts
 import Signup from "./components/Signup";
 import Product from "./components/Ecommerce/ProductList";
 import CandyCrush from "./components/Games/CandyCrush";
-import Racing from "./components/Games/Racing";
 import TicTacToe from "./components/Games/TicTacToe";
 
 function App() {
@@ -68,7 +67,6 @@ function App() {
                   path="/candycrush"
                   element={<CandyCrush ROWS={5} COLS={5} />}
                 />
-                <Route path="/racing" element={<Racing />} />
                 <Route path="/tic-tac-toe" element={<TicTacToe />} />
               </Routes>
             </main>
