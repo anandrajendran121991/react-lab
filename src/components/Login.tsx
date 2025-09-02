@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase";
 
@@ -15,7 +15,7 @@ function Login() {
     e.preventDefault();
 
     if (!email || !password) {
-      setError("Username and password are required");
+      setError("Email and password are required");
       return;
     }
 
@@ -27,9 +27,9 @@ function Login() {
 
       navigate("/");
     } catch (err: any) {
-      console.log(err);
+      console.error(err);
       if (err.code === "auth/invalid-credential") {
-        setError("Invalid Login Credentials");
+        setError("Invalid login credentials");
       } else {
         setError("Login failed. Please try again.");
       }
@@ -39,9 +39,11 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
       <div className="w-full max-w-sm p-6 bg-white rounded-2xl shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Login
+        </h2>
 
         {error && (
           <p
@@ -54,13 +56,13 @@ function Login() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
-            type="text"
+            type="email"
             value={email}
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             disabled={loading}
-            aria-label="Username"
+            aria-label="Email"
           />
 
           <input
@@ -85,6 +87,27 @@ function Login() {
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+
+        {/* Extra Links */}
+        <div className="mt-6 text-center space-y-2">
+          <p className="text-sm text-gray-600">
+            Don’t have an account?{" "}
+            <Link
+              to="/signup"
+              className="text-blue-600 hover:underline font-medium"
+            >
+              Sign up
+            </Link>
+          </p>
+          <p className="text-sm">
+            <Link
+              to="/"
+              className="text-gray-700 hover:text-blue-600 hover:underline"
+            >
+              ← Back to Home
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
